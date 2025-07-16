@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Velo Brand Guidelines - Official Reference</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --love-velo-orange: #F16724;
+            --love-velo-purple: #4A2644;
+            --love-velo-bg: #fafafa;
+            --love-velo-text: #2d3748;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--love-velo-bg);
+            color: var(--love-velo-text);
+        }
+        
+        .brand-orange { color: var(--love-velo-orange); }
+        .brand-purple { color: var(--love-velo-purple); }
+        .bg-brand-orange { background-color: var(--love-velo-orange); }
+        .bg-brand-purple { background-color: var(--love-velo-purple); }
+        .border-brand-orange { border-color: var(--love-velo-orange); }
+        
+        .sidebar-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #f7fafc;
+            border-left: 4px solid var(--love-velo-orange);
+        }
+        
+        .sidebar-item.active {
+            background-color: #fff5f0;
+            border-left: 4px solid var(--love-velo-orange);
+            color: var(--love-velo-orange);
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            margin-right: 1rem;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .dm-example {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .dm-example::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            background: inherit;
+            border-radius: 50%;
+        }
+        
+        .message-bubble {
+            background: #007bff;
+            border-radius: 18px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            max-width: 80%;
+            color: white;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .message-bubble.received {
+            background: #e9ecef;
+            color: #495057;
+            align-self: flex-start;
+        }
+        
+        .message-bubble.sent {
+            background: #007bff;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .dm-conversation {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--love-velo-orange);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-80 bg-white shadow-lg">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center mb-2">
+                    <span class="logo-text brand-orange">Love</span>
+                    <span class="logo-text brand-purple">Velo</span>
+                </div>
+                <p class="text-sm text-gray-600">Brand Guidelines</p>
+                <p class="text-xs text-gray-500 mt-1">Version 2.0 • December 2024</p>
+            </div>
+            
+            <nav class="py-4">
+                <div class="sidebar-item active px-6 py-3 flex items-center" onclick="showSection('overview')">
+                    <i class="fas fa-home mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Brand Overview</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('logo')">
+                    <i class="fas fa-star mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Master Logo</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('colors')">
+                    <i class="fas fa-palette mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Colors</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('typography')">
+                    <i class="fas fa-font mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Typography</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('messaging')">
+                    <i class="fas fa-comment-alt mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Brand Messaging</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('photography')">
+                    <i class="fas fa-camera mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Photography Style</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('social-voice')">
+                    <i class="fab fa-instagram mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Social Media Voice</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('applications')">
+                    <i class="fas fa-laptop mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Applications</span>
+                </div>
+                <div class="sidebar-item px-6 py-3 flex items-center" onclick="showSection('guidelines')">
+                    <i class="fas fa-exclamation-triangle mr-3 text-sm"></i>
+                    <span class="text-sm font-medium">Usage Guidelines</span>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <!-- Brand Overview Section -->
+            <div id="overview" class="content-section active p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Brand Overview & Evolution</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <p class="text-lg leading-relaxed mb-6">
+                        Love Velo is a cycling business dedicated to experiences that help riders push their boundaries – in sport and life. 
+                        We're not just obsessed with clocking more kilometres or tackling tougher climbs, we're all about broadening horizons 
+                        and pushing the boundaries of what is possible. It's about gaining new experiences, and growing as individuals. 
+                        Using cycling as a means to explore and engage with the world around you, expanding both your physical and mental boundaries.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-bicycle brand-orange text-xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">Primary Brand Tagline</h3>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4 brand-purple">"We Ride Further. Together."</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            This represents an evolution from the original tactical message "Travel. By Bike" to a more community-focused 
+                            positioning that maintains the core "Ride Further" philosophy while emphasizing the collective journey. 
+                            The addition of "Together" reflects the brand's growth into a community-building organization rather than 
+                            simply a service provider.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-lightbulb brand-orange text-xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">Brand Idea: "Ride Further"</h3>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4 brand-purple">Foundational Philosophy</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Ride Further remains the foundational philosophy, mindset, and way of life for Love Velo. This concept 
+                            encompasses both physical and metaphorical boundaries, representing the brand's belief that cycling is 
+                            an adventure that ignites passion and instigates positive change. The philosophy enables customers to 
+                            explore new places, meet incredible people, and tackle various challenges, facilitating growth and self-discovery.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-4 brand-purple">Target Audience Philosophy</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Love Velo exists for everyone that rides a bike, maintaining an inclusive approach that welcomes cyclists 
+                        across all experience levels and motivations. The brand celebrates diversity within the cycling community, 
+                        acknowledging different cycling journeys from childhood milestones to professional achievements. As stated 
+                        in their brand messaging: "We live for the first time a kid rides without stabilisers and for the commuters 
+                        who ride to their computers. We say 'Chapeau' to the friends who ride together and we give Kudos to serious 
+                        cyclists on their Strava propelled rides."
+                    </p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Cyclists Travel Yearly</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Trustpilot Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">ABTOT</div>
+                        <div class="stat-label">Protected (#5523)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logo Section -->
+            <div id="logo" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Master Logo</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <div class="text-center mb-6">
+                        <div class="inline-block">
+                            <span class="text-6xl font-bold brand-orange">Love</span>
+                            <span class="text-6xl font-bold brand-purple">Velo</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-2">Travel. By Bike</p>
+                    </div>
+                    
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-semibold mb-4">Logo Usage Rules</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• The master Love Velo logo must only be used on a white background</li>
+                            <li>• Must not be reproduced in any other colour scheme</li>
+                            <li>• Logo may NOT be redrawn, scanned or altered in any way</li>
+                            <li>• Minimum clear space equal to the dimensions of the letter "O"</li>
+                            <li>• Never reproduce smaller than 15mm wide</li>
+                            <li>• Use only supplied EPS vector files</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Reversed Logos</h3>
+                    <p class="text-gray-600 mb-4">
+                        For applications where the logo is to be reproduced against a coloured background, 
+                        reversed logos are available. These must not be used against any other colour than specified.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg text-center">
+                            <span class="text-2xl font-bold text-white">Love</span>
+                            <span class="text-2xl font-bold text-white">Velo</span>
+                        </div>
+                        <div class="bg-brand-orange p-4 rounded-lg text-center">
+                            <span class="text-2xl font-bold text-white">Love</span>
+                            <span class="text-2xl font-bold text-white">Velo</span>
+                        </div>
+                        <div class="bg-brand-purple p-4 rounded-lg text-center">
+                            <span class="text-2xl font-bold text-white">Love</span>
+                            <span class="text-2xl font-bold text-white">Velo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colors Section -->
+            <div id="colors" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Colors</h1>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="color-swatch bg-brand-orange"></div>
+                            <div>
+                                <h3 class="text-xl font-semibold">Pantone 1655 C</h3>
+                                <p class="text-sm text-gray-600">Primary Orange</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>CMYK:</strong> C 0 M 75 Y 100 K 0</p>
+                            <p><strong>RGB:</strong> R 241 G 103 B 36</p>
+                            <p><strong>WEB:</strong> #F16724</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="color-swatch bg-brand-purple"></div>
+                            <div>
+                                <h3 class="text-xl font-semibold">Pantone 5115 C</h3>
+                                <p class="text-sm text-gray-600">Primary Purple</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>CMYK:</strong> C 65 M 85 Y 45 K 45</p>
+                            <p><strong>RGB:</strong> R 74 G 38 B 68</p>
+                            <p><strong>WEB:</strong> #4A2644</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Color Usage Guidelines</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Colors shown are not intended as a match to Pantone Colour Standards</li>
+                        <li>• Use a suitable Pantone colour selector when specifying colours</li>
+                        <li>• Spot color printing is preferred</li>
+                        <li>• Four color process may be used if spot color is unavailable</li>
+                        <li>• Use appropriate color values for respective media (CMYK for print, RGB for screen, WEB for digital)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Typography Section -->
+            <div id="typography" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Typography</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Primary Typeface: Texta Family</h3>
+                    <p class="text-gray-600 mb-6">
+                        The highly legible sans-serif Texta Family is the primary typeface for use in all Love Velo communications.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-light mb-2">Texta Thin</h4>
+                            <p class="text-3xl font-light">The quick brown fox jumps over the lazy dog</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-normal mb-2">Texta Regular</h4>
+                            <p class="text-3xl font-normal">The quick brown fox jumps over the lazy dog</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">Texta Bold</h4>
+                            <p class="text-3xl font-bold">The quick brown fox jumps over the lazy dog</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messaging Section -->
+            <div id="messaging" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Brand Messaging</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Primary Strapline</h3>
+                    <h2 class="text-3xl font-bold mb-4 brand-orange">"Travel. By Bike"</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        The "Travel. By Bike" line is the primary tactical communications message, and can be used across all media. 
+                        This foundational message has evolved to support the broader "We Ride Further. Together." positioning while 
+                        maintaining the core travel and cycling focus.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Brand Philosophy</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        <strong>Ride Further</strong> is our philosophy, a mindset, and a way of life. We believe that cycling is an adventure 
+                        that ignites passion and instigates positive change. We will help you explore new places, meet incredible people 
+                        and tackle challenges. We exist to inspire and empower you to discover new places, new people, and new possibilities.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        We are here to provide opportunities for cyclists to embark on cycling tours, holidays and adventures that will 
+                        enrich their lives. #ridefurther #lovevelo #lovecycling
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Photography Section -->
+            <div id="photography" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Photography Style</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Visual Approach</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        The photography style for Love Velo is a mix of the first person perspective and lifestyle imagery which 
+                        captures a sense of journey and adventure while on a cycling holiday.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">First Person Perspective</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li>• Handlebars and bike components in frame</li>
+                                <li>• Road/trail from rider's viewpoint</li>
+                                <li>• Creates immersive experience</li>
+                                <li>• Emphasizes the journey</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3">Lifestyle Imagery</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li>• Authentic cycling moments</li>
+                                <li>• Local culture and scenery</li>
+                                <li>• Group interactions and community</li>
+                                <li>• Adventure and exploration themes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media Voice Section -->
+            <div id="social-voice" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Social Media Voice</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Instagram DM Strategy for USA Cyclist Outreach</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        When reaching out to USA cycling enthusiasts in touring groups, maintain Love Velo's authentic, 
+                        community-focused voice. These messages should be genuine icebreakers that share real experiences 
+                        while respecting the fact that recipients don't know us yet.
+                    </p>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <h4 class="font-semibold text-yellow-800">Key Principles:</h4>
+                        <ul class="text-yellow-700 text-sm mt-2 space-y-1">
+                            <li>• Be genuine and conversational, not sales-focused</li>
+                            <li>• Share authentic experiences, not marketing copy</li>
+                            <li>• Respect their time and interests</li>
+                            <li>• Maintain the "community of cyclists" approach</li>
+                            <li>• Use cycling culture language naturally</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- DM Example 1 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-lg font-semibold mb-4 flex items-center">
+                            <i class="fab fa-instagram mr-2 text-pink-500"></i>
+                            Experience Sharing Approach
+                        </h4>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="dm-conversation">
+                                <div class="message-bubble sent">
+                                    Hey! Saw your post about the Pacific Coast tour - looks incredible! 🚴‍♂️
+                                </div>
+                                <div class="message-bubble sent">
+                                    I just got back from an amazing trip through the Dolomites with Love Velo and your photos reminded me of that same feeling of pure freedom on the bike
+                                </div>
+                                <div class="message-bubble sent">
+                                    Have you ever considered cycling in Europe? The mountains there are just... wow. Different vibe than the PCH but equally stunning
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Why this works:</strong> Opens with genuine appreciation of their content, shares personal experience, 
+                            creates curiosity without being pushy.
+                        </p>
+                    </div>
+                    
+                    <!-- DM Example 2 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-lg font-semibold mb-4 flex items-center">
+                            <i class="fab fa-instagram mr-2 text-pink-500"></i>
+                            Community Connection Approach
+                        </h4>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="dm-conversation">
+                                <div class="message-bubble sent">
+                                    Love the cycling community vibes in this group! 🙌
+                                </div>
+                                <div class="message-bubble sent">
+                                    Just spent 2 weeks cycling through Tuscany with Love Velo and met some incredible people from all over the world - reminded me why I love this sport so much
+                                </div>
+                                <div class="message-bubble sent">
+                                    The way cycling brings people together is just magical, isn't it? What's been your favorite touring experience so far?
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Why this works:</strong> Celebrates the group culture, shares emotional connection to cycling, 
+                            ends with a question to encourage dialogue.
+                        </p>
+                    </div>
+                    
+                    <!-- DM Example 3 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-lg font-semibold mb-4 flex items-center">
+                            <i class="fab fa-instagram mr-2 text-pink-500"></i>
+                            Adventure Inspiration Approach
+                        </h4>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="dm-conversation">
+                                <div class="message-bubble sent">
+                                    Your gear setup looks dialed! Are you planning any international adventures?
+                                </div>
+                                <div class="message-bubble sent">
+                                    I just had the most incredible experience cycling the Camino routes in Spain with Love Velo - completely different from anything I've done in the US
+                                </div>
+                                <div class="message-bubble sent">
+                                    The combination of history, culture, and those endless rolling hills... it really made me appreciate how cycling can be so much more than just exercise
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Why this works:</strong> Compliments their expertise, shares transformative experience, 
+                            highlights the deeper meaning of cycling travel.
+                        </p>
+                    </div>
+                    
+                    <!-- DM Example 4 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-lg font-semibold mb-4 flex items-center">
+                            <i class="fab fa-instagram mr-2 text-pink-500"></i>
+                            Helpful Resource Approach
+                        </h4>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="dm-conversation">
+                                <div class="message-bubble sent">
+                                    That climb looks brutal! 😅 Mad respect for tackling those grades
+                                </div>
+                                <div class="message-bubble sent">
+                                    Speaking of challenging climbs, I just crushed Alpe d'Huez on a Love Velo trip in France - probably the hardest thing I've ever done but so worth it
+                                </div>
+                                <div class="message-bubble sent">
+                                    If you're ever looking for epic European climbs, I'd be happy to share some route recommendations from the trip! The support they provided made it actually enjoyable (well, mostly 😂)
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Why this works:</strong> Shows respect for their achievement, shares relatable challenge, 
+                            offers value through route recommendations.
+                        </p>
+                    </div>
+                    
+                    <!-- DM Example 5 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-lg font-semibold mb-4 flex items-center">
+                            <i class="fab fa-instagram mr-2 text-pink-500"></i>
+                            Authentic Enthusiasm Approach
+                        </h4>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="dm-conversation">
+                                <div class="message-bubble sent">
+                                    Those sunrise shots are incredible! There's something special about being on the bike when the world's still waking up
+                                </div>
+                                <div class="message-bubble sent">
+                                    I had so many of those magical moments cycling through the Austrian Alps with Love Velo last month - early morning starts, mountain coffee stops, incredible views
+                                </div>
+                                <div class="message-bubble sent">
+                                    It's funny how cycling travel gives you these moments you just can't get any other way. Do you find that too?
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Why this works:</strong> Connects with their artistic/emotional side, shares poetic experience, 
+                            creates philosophical connection about cycling.
+                        </p>
+                    </div>
+                    
+                    <!-- DM Example 6 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-lg font-semibold mb-4 flex items-center">
+                            <i class="fab fa-instagram mr-2 text-pink-500"></i>
+                            Cultural Exchange Approach
+                        </h4>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="dm-conversation">
+                                <div class="message-bubble sent">
+                                    The cycling culture in the US is so different from what I experienced in Europe! Love seeing your group rides
+                                </div>
+                                <div class="message-bubble sent">
+                                    Just got back from cycling through Mallorca with Love Velo - the way cycling is woven into daily life there is amazing. Every village has cyclists stopping for coffee
+                                </div>
+                                <div class="message-bubble sent">
+                                    It made me think about how much we can learn from different cycling cultures around the world. Have you noticed differences when you travel?
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Why this works:</strong> Acknowledges cultural differences respectfully, shares interesting observation, 
+                            invites cultural exchange conversation.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                    <h4 class="text-lg font-semibold mb-4 text-red-600">❌ What NOT to Do</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-red-50 border-l-4 border-red-400 p-3">
+                            <strong>Don't:</strong> "Hi! I work with Love Velo and we have amazing cycling holidays in Europe!"
+                            <br><span class="text-red-600">Too sales-focused and impersonal</span>
+                        </div>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-3">
+                            <strong>Don't:</strong> "You should definitely book with Love Velo for your next trip!"
+                            <br><span class="text-red-600">Too pushy and assumptive</span>
+                        </div>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-3">
+                            <strong>Don't:</strong> Send generic copy-paste messages
+                            <br><span class="text-red-600">Shows lack of genuine interest</span>
+                        </div>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-3">
+                            <strong>Don't:</strong> Immediately mention prices or bookings
+                            <br><span class="text-red-600">Breaks the community-first approach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Applications Section -->
+            <div id="applications" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Applications</h1>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4">Print Applications</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><strong>Letterhead:</strong> Conqueror Connoisseur 100% Cotton Soft White - 160gsm</li>
+                            <li><strong>Business Cards:</strong> Conqueror Connoisseur 100% Cotton Soft White - 300gsm</li>
+                            <li><strong>Envelopes:</strong> Conqueror Connoisseur 100% Cotton Soft White - 160gsm</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4">Digital Applications</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><strong>Website:</strong> Responsive design with brand colors</li>
+                            <li><strong>Social Media:</strong> Consistent visual identity</li>
+                            <li><strong>Email:</strong> HTML templates with brand elements</li>
+                            <li><strong>Digital Marketing:</strong> Branded assets for campaigns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guidelines Section -->
+            <div id="guidelines" class="content-section p-8">
+                <h1 class="text-4xl font-bold mb-8 brand-purple">Usage Guidelines</h1>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h3 class="text-xl font-semibold mb-4">Logo Guidelines</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Never put the logo on a background which makes it illegible</li>
+                        <li>• Never increase or decrease the proportions of any part of the logo</li>
+                        <li>• Never change the colour of the logo</li>
+                        <li>• No elements may be recreated, deleted, cropped, or reconfigured</li>
+                        <li>• Logo artwork must be uniformly scaled</li>
+                        <li>• Never use the logo on an angle</li>
+                        <li>• Logo should appear against a solid background for maximum contrast</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Print Specifications</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Spot color printing is preferred</li>
+                        <li>• Four color process may be used if spot color is unavailable</li>
+                        <li>• Use supplied EPS files - never recreate artwork</li>
+                        <li>• Maintain proper color specifications for each medium</li>
+                        <li>• Always reference official brand guidelines for queries</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all sidebar items
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            sidebarItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked sidebar item
+            event.target.closest('.sidebar-item').classList.add('active');
+        }
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDhKFARjVXdsfMlh74YpynkMReeysSmOkumNBDBzA%2B5p9tfIxU0HOniEP%2FDLMieWY7EIe%2FUdkRMw6kvEW7yYTIKtCs61TofxgLafvVQkYCHkhjxcXUmtTtbD%2F7RdfqGqqJ5%2BwHGTngeV%2FVxtV3CjyAIjzG8XcJ%2F0WnTzPkaB4Pn3DqUjkE9hM2yuFxoqmcwBjAu%2BRAbUGisirwcT9JrGXl3NWEkVeIHom%2BQv1xORGyQs%2BSNMob5alSTltx%2FShCY3Reo3psn%2BOy44ilo7DvDbsuTAOEYsh1kVKsvXe7%2FoGSuJp5xs0xu6zld9SRepfW9h0li9kagImG7IpsyJGOPPiV5yMnUZEzgWR9mYOH9gRHbMoU3bNjyXjl2DKnXvxXOqZnxN6CEQVfZDie81q%2F%2F1GaT%2FldmNoKSgYXE7FXq97LjqGQ0NmFpxKiSKMlGzhVTnkNzjAz6j%2Bz8mQ0DiQXV%2F1SMDixFyJhdjbSbQILeQo5ATDwRzZKTK%2BvNTVoqZmrhchtjHVCoE%2FYb5Ep6rF4PdPl0AXUsEWY7utHogCoXpNas2Q";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDhKFARjVXdsfMlh74YpynkMReeysSmOkumNBDBzA+5p9tfIxU0HOniEP/DLMieWY7EIe/UdkRMw6kvEW7yYTIKtCs61TofxgLafvVQkYCHkhjxcXUmtTtbD/7RdfqGqqJ5+wHGTngeV/VxtV3CjyAIjzG8XcJ/0WnTzPkaB4Pn3DqUjkE9hM2yuFxoqmcwBjAu+RAbUGisirwcT9JrGXl3NWEkVeIHom+Qv1xORGyQs+SNMob5alSTltx/ShCY3Reo3psn+Oy44ilo7DvDbsuTAOEYsh1kVKsvXe7/oGSuJp5xs0xu6zld9SRepfW9h0li9kagImG7IpsyJGOPPiV5yMnUZEzgWR9mYOH9gRHbMoU3bNjyXjl2DKnXvxXOqZnxN6CEQVfZDie81q//1GaT/ldmNoKSgYXE7FXq97LjqGQ0NmFpxKiSKMlGzhVTnkNzjAz6j+z8mQ0DiQXV/1SMDixFyJhdjbSbQILeQo5ATDwRzZKTK+vNTVoqZmrhchtjHVCoE/Yb5Ep6rF4PdPl0AXUsEWY7utHogCoXpNas2Q";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
